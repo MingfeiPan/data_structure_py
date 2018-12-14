@@ -36,11 +36,6 @@ class Heap:
 				self.h[m] = temp
 				self.maxHeapify(m)
 
-	def buildHeap(self,a):
-		self.currsize = len(a)
-		self.h = list(a)
-		for i in range(self.currsize//2,-1,-1):
-			self.maxHeapify(i)
 
 	def getTop(self):
 		if self.currsize >= 1:
@@ -53,16 +48,6 @@ class Heap:
 			self.maxHeapify(0)
 			return me
 		return None
-
-	def heapSort(self):
-		size = self.currsize
-		while self.currsize-1 >= 0:
-			temp = self.h[0]
-			self.h[0] = self.h[self.currsize-1]
-			self.h[self.currsize-1] = temp
-			self.currsize -= 1
-			self.maxHeapify(0)
-		self.currsize = size
 
 	def insert(self,data):
 		self.h.append(data)
@@ -79,8 +64,8 @@ class Heap:
 
 def main():
 
-	listsize = 100
-	listcount = 100
+	listsize = 1000
+	listcount = 1000
 	l = [[random.randrange(1, 10000) for i in range(listsize)] for index in range(listcount)]
 	list(map(lambda a : a.sort(), l))
 
@@ -95,7 +80,7 @@ def main():
 		if temp.index < listsize - 1:
 			h.insert(item(temp.listname, temp.index+1, l[temp.listname][temp.index+1]))
 		flag += 1
-	print(output)
+	print(len(output))
 
 
 if __name__=='__main__':
